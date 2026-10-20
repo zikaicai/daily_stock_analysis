@@ -4,7 +4,7 @@ permissions:
   contents: write
 
 on:
-  # 每12小时同步一次
+  # 每12小时同步一次 
   schedule:
     - cron: '0 */12 * * *'
 
