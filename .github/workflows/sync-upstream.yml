@@ -24,7 +24,7 @@ jobs:
       - name: Checkout target repo
         uses: actions/checkout@v5
         with:
-          persist-credentials: false
+          token: ${{ secrets.SYNC_TOKEN }}
           fetch-depth: 0
 
       - name: Upstream Sync
@@ -33,8 +33,8 @@ jobs:
           # 你自己的 fork 分支
           target_sync_branch: main
 
-          # GitHub Token（必须）
-          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          # PAT（必须）：需 repo + workflow 权限，GITHUB_TOKEN 无法更新 .github/workflows 下的文件
+          target_repo_token: ${{ secrets.SYNC_TOKEN }}
 
           # 上游仓库
           upstream_sync_repo: ZhuLinsen/daily_stock_analysis
